@@ -1,0 +1,131 @@
+<!--<template name="postsList">-->
+    <!--<div class="posts">-->
+        <!--{{#each posts}}-->
+            <!--{{> postItem}}-->
+        <!--{{/each}}-->
+    <!--</div>-->
+<!--</template>-->
+<!--<template name="postItem">-->
+    <!--<div class="post">-->
+        <!--<div class="post-content">-->
+            <!--<h3><a href="{{url}}">{{title}}</a><span>{{domain}}</span></h3>-->
+        <!--</div>-->
+        <!--<a href="{{pathFor 'postPage'}}" class="discuss btn btn-default">Discuss</a>-->
+    <!--</div>-->
+<!--</template>-->
+
+
+
+<template name="listPage">
+    {{> header}}
+    <div class="infoList">
+        <ul>
+            {{#each infoList}}
+                {{> infoLists}}
+            {{/each}}
+        </ul>
+    </div>
+</template>
+<template name="infoLists">
+    <div class="infoLists">
+        <div class="infoLists-content">
+            <li>
+                <div class="img">
+                    <a href="{{pathFor 'detailPage'}}" ><img src="{{srcUrl}}"></a>
+                </div>
+                <div class="des">
+                    {{title}} <span > ￥{{price}}</span>
+                    <div class="price"></div>
+                </div>
+            </li>
+        </div>
+    </div>
+</template>
+
+<template name="detailPage">
+    <!--<div class="container-fluid">-->
+        <div class="row">
+            <div class="col-xs-2 col-md-2">
+                <img src="http://pic.qqtn.com/up/2016-5/2016050509510045768.jpg" >
+                <p>珍宝时光</p>
+            </div>
+            <div class="col-xs-10 col-md-10">
+                <div class="text-left">
+                    <p>
+                        {{content}}
+                    </p>
+                </div>
+                <div class="detailImg">
+                    {{#each url in images}}
+                        <img src="{{url}}" class="img-rounded" width="140" height=“140”>
+                    {{/each}}
+                </div>
+                <div class="addPrice">
+                    <table class="table table-striped">
+                        <tr class="success">
+                            <td>
+                                开价 :￥ {{initPrice}}
+                            </td>
+                            <td>
+                                加价 :￥ {{increments}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="showPrice">
+                    {{> showPrice}}
+
+                </div>
+                {{> bidderlist }}
+            </div>
+        </div>
+    <!--</div>-->
+</template>
+
+
+
+
+
+
+
+<template name="bidderlist">
+    <div class="bidder" >
+        {{#each bidder}}
+            {{> buyer}}
+        {{/each}}
+    </div>
+</template>
+
+<template name="buyer">
+    <table class="table table-striped table-condensed">
+        <tr>
+            <td>
+                <img src="{{headImg}}" class="img-circle" width="30" height=“30”>
+                {{bidder}}
+                ￥ {{offer}}
+            </td>
+            <td>
+                {{status}}
+            </td>
+        </tr>
+    </table>
+
+</template>
+
+<template name="showPrice">
+
+
+
+    <form class="offer form">
+    <div class="controls">
+        <ul class="inline">
+            <li>
+                <label class="control-label" for="iphone">出价</label>
+                <input name="offer" id="offer" type="number" value="" placeholder="Your offer" />
+                <input type="submit" value="----------------------出价---------------------" class="btn btn-mini btn-primary btn-success" />
+            </li>
+
+        </ul>
+    </div>
+    </form>
+</template>
